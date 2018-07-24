@@ -1,8 +1,8 @@
 import React from 'react';
-import BackButton from '../utility/BackButton';
+// import BackButton from '../utility/BackButton';
 
 
-function ProblemsForm({history, handleSubmit, handleChange, problem}) {
+function ProblemsForm({ handleSubmit, handleChange, problem}) {
   return (
     <div className="row">
       <div className="page-banner col-md-12">
@@ -58,7 +58,7 @@ function ProblemsForm({history, handleSubmit, handleChange, problem}) {
         <button className="btn btn-success">Save</button>
         <br />
         <br />
-        <BackButton history={history} />
+        {/* <BackButton history={history} /> */}
       </form>
     </div>
   );

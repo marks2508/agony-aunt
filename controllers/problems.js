@@ -29,6 +29,7 @@ function problemsShow(req, res, next) {
 function problemsUpdate(req, res, next) {
   Problem
     .findByIdAndUpdate(req.params.id, req.body, {new: true})
+    .exec()
     .then(problem => res.status(200).json(problem))
     .catch(next);
 }

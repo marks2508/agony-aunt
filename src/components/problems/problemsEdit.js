@@ -11,6 +11,12 @@ class ProblemsEdit extends React.Component {
       location: ''
     }
   }
+  componentDidMount() {
+    Axios
+      .get(`/api/problems/${this.props.match.params.id}`)
+      .then(res => this.setState({ problem: res.data}))
+      .catch(err => console.log(err));
+  }
 
   handleChange = ({ target: {name, value}}) => {
     const problem = Object.assign({}, this.state.problem, { [name]: value});
@@ -23,12 +29,7 @@ class ProblemsEdit extends React.Component {
       .then(() => this.props.history.push(`/problems/${this.props.match.params.id}`))
       .catch(err => console.log(err));
   }
-  componentDidMount() {
-    Axios
-      .get(`/api/problems/${this.props.match.params.id}`)
-      .then(res => this.setState({ problem: res.data}))
-      .catch(err => console.log(err));
-  }
+
 
   render() {
     return (

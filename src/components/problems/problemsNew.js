@@ -23,9 +23,7 @@ class ProblemsNew extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
     Axios
-      .post('/api/problems', this.state.problem, {
-        headers: {Authorization: `Bearer ${Auth.getToken()}`}
-      })
+      .post('/api/problems', this.state.problem, { headers: {Authorization: `Bearer ${Auth.getToken()}`}})
       .then(() => this.props.history.push('/profile'))
       .catch(err => this.setState({errors: err.response.data.errors}));
   }
