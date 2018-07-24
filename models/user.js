@@ -1,33 +1,11 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
-
-const problemSchema = mongoose.Schema({
-  title: {type: String, required: 'Please enter a title'},
-  issue: {type: String, required: 'Please enter your problem!'},
-  age: {type: Number, required: 'Please enter your age'},
-  location: {type: String, required: 'Please enter your location'}
-});
-
-problemSchema.set('toJSON', {
-  getters: true,
-  virtuals: true,
-  transform(obj, json) {
-    delete json._id;
-    delete json.__v;
-  }
-});
-
-problemSchema.methodsbelongsTo = function belongsTo(user) {
-  return user._id.equals(this.ownedBy.id);
-};
-
 const userSchema = new mongoose.Schema({
   name: { type: String, required: 'Please enter your name'},
-  username: {type: String, required: 'Please enter your username'},
-  email: {type: String, required: 'Please enter a valid email address'},
-  password: {type: String, required: 'Please choose a password'},
-  problems: [problemSchema]
+  username: { type: String, required: 'Please enter your username' },
+  email: { type: String, required: true, unique: 'Please enter a valid email address' },
+  password: { type: String, required: 'Please choose a password' }
 });
 
 userSchema.set('toJSON', {
@@ -47,7 +25,7 @@ userSchema
   });
 
 userSchema.pre('validate', function checkPassword(next) {
-  if(this.isModified('password') && (!this._passwordConfirmation || this._passwordConfirmation !== this.password)) {
+  if(!this._passwordConfirmation || this._passwordConfirmation !== this.password) {
     this.invalidate('passwordConfirmation', 'Passwords do not match');
   }
   next();
@@ -59,7 +37,6 @@ userSchema.pre('save', function hashPassword(next) {
   }
   next();
 });
-
 
 userSchema.methods.validatePassword = function validatePassword(password) {
   return bcrypt.compareSync(password, this.password);

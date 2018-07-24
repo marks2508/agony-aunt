@@ -2,7 +2,6 @@ import React from 'react';
 import Axios from 'axios';
 import LoginForm from './LoginForm';
 import Auth from '../../lib/Auth';
-import Homepage from '../utility/Homepage';
 
 class Login extends React.Component {
   state = {
