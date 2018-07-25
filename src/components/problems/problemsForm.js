@@ -24,9 +24,20 @@ function ProblemsForm({ handleSubmit, handleChange, problem}) {
           <input
             type="text"
             className="form-control"
-            id="title"
-            name="title"
+            id="issue"
+            name="issue"
             value={problem.issue}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="">Category</label>
+          <input
+            type="text"
+            className="form-control"
+            id="category"
+            name="category"
+            value={problem.category}
             onChange={handleChange}
           />
         </div>

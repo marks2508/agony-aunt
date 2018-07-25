@@ -1,18 +1,14 @@
 import React from 'react';
 import Axios from 'axios';
-import ProblemsForm from './problemsForm';
+import CommentsForm from './commentsForm';
 import Auth from '../../lib/Auth';
-import BackButton from '../utility/BackButton';
 
 
-class ProblemsNew extends React.Component {
+
+class CommentsNew extends React.Component {
   state = {
-    problem: {
-      title: '',
-      issue: '',
-      category: '',
-      age: '',
-      location: ''
+    comment: {
+      advice: ''
     },
     errors: {}
   }
@@ -23,11 +19,15 @@ class ProblemsNew extends React.Component {
     this.setState({problem, errors});
   }
 
+
+
+
+
   handleSubmit = (e) => {
     e.preventDefault();
     Axios
-      .post('/api/problems', this.state.problem, { headers: {Authorization: `Bearer ${Auth.getToken()}`}})
-      .then(() => this.props.history.push('/profile'))
+      .post(`/api/problems/${this.props.match.params.id}/comments`, this.state.comment, { headers: {'Authorization': `Bearer ${Auth.getToken()}` }})
+      .then(() => this.props.history.push(`/problems/${this.props.match.params.id}`))
       .catch(err => this.setState({errors: err.response.data.errors}));
   }
 
@@ -36,14 +36,15 @@ class ProblemsNew extends React.Component {
       <div className="container">
         <div className="row">
           <div className="col-md-6">
-            <h1 className="problem-new-title">Add your problem: </h1>
-            <BackButton />
-            <ProblemsForm
+            <h1 className="comment-new-advice">Add your advice</h1>
+          </div>
+          <div className="col-md-6">
+            <CommentsForm
               history={this.props.history}
               handleSubmit={this.handleSubmit}
               handleChange={this.handleChange}
-              problem={this.state.problem}
               errors={this.state.errors}
+              advice={this.state.comment.advice}
             />
           </div>
         </div>
@@ -52,4 +53,4 @@ class ProblemsNew extends React.Component {
   }
 }
 
-export default ProblemsNew;
+export default CommentsNew;

@@ -1,27 +1,23 @@
 import React from 'react';
 import Axios from 'axios';
-import ProblemsForm from './ProblemsForm';
+import ProblemsForm from './problemsForm';
 
 class ProblemsEdit extends React.Component {
   state = {
     problem: {
       title: '',
       issue: '',
+      category: '',
       age: '',
       location: ''
     }
-  }
-  componentDidMount() {
-    Axios
-      .get(`/api/problems/${this.props.match.params.id}`)
-      .then(res => this.setState({ problem: res.data}))
-      .catch(err => console.log(err));
   }
 
   handleChange = ({ target: {name, value}}) => {
     const problem = Object.assign({}, this.state.problem, { [name]: value});
     this.setState({problem});
   }
+
   handleSubmit = (e) => {
     e.preventDefault();
     Axios
@@ -30,6 +26,12 @@ class ProblemsEdit extends React.Component {
       .catch(err => console.log(err));
   }
 
+  componentDidMount() {
+    Axios
+      .get(`/api/problems/${this.props.match.params.id}`)
+      .then(res => this.setState({ problem: res.data}))
+      .catch(err => console.log(err));
+  }
 
   render() {
     return (

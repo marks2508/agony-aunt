@@ -17,7 +17,7 @@ commentSchema.set('toJSON', {
 const problemSchema = mongoose.Schema({
   title: {type: String, required: 'Please enter a name'},
   issue: {type: String, required: 'Please select a breed'},
-  category: {type: Number, required: 'Please enter an age'},
+  category: {type: String, required: 'Please enter an age'},
   age: {type: Number, required: 'Please select a sex'},
   location: {type: String, required: 'Load a photo'},
   comments: [commentSchema]

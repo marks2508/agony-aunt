@@ -21,7 +21,7 @@ class ProblemsIndex extends React.Component {
         <h2 className="sub-title">This is a site where you post your problems and people can offer their advice - all for free!</h2>
         <div className="container">
           <div className="row">
-            <Link to="/problem/new" className="main-button">
+            <Link to="/problems/new" className="main-button">
               <i className="fa fa-plus" aria-hidden="true"></i>Add Problem
             </Link>
             {this.state.problem.map(problem => {

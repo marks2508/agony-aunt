@@ -17,7 +17,7 @@ const Navbar = ({ history }) => {
           { Auth.isAuthenticated() && <Link to="/" className="nav-item nav-link"></Link>}
         </div>
         <div className="navbar-nav ml-md-auto">
-          { Auth.isAuthenticated() && <Link to="/problem/new" className="nav-item nav-link">Add a problem</Link>}
+          { Auth.isAuthenticated() && <Link to="/problems/new" className="nav-item nav-link">Add a problem</Link>}
           { !Auth.isAuthenticated() && <Link to="/login" className="nav-item nav-link">Login</Link>}
           { !Auth.isAuthenticated() && <Link to="/register" className="nav-item nav-link">Register</Link>}
           { Auth.isAuthenticated() && <Link to="#" className="logout nav-item nav-link" onClick={logout}>Logout</Link>}

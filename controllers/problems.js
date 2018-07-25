@@ -47,7 +47,6 @@ function problemsDelete(req, res, next) {
 }
 
 function problemsCommentsCreate(req, res, next) {
-  req.body.distance = parseFloat(req.body.distance);
   User
     .findById(req.currentUser._id)
     .exec()
