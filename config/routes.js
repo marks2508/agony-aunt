@@ -1,17 +1,29 @@
 const router = require('express').Router();
+const comments = require('../controllers/comments');
 const problems = require('../controllers/problems');
+const users = require('../controllers/users');
 const auth = require('../controllers/auth');
 const secureRoute = require('../lib/secureRoute');
 
-
 router.route('/problems')
-  .get(problems.index)
-  .post(problems.create);
+  .post(secureRoute, problems.create);
 
 router.route('/problems/:id')
-  .get(problems.show)
+  .get(secureRoute, problems.show)
   .put(problems.update)
-  .delete(secureRoute, problems.delete);
+  .delete(problems.delete);
+
+router.route('/problems/:id/comments')
+  .post(secureRoute, problems.addWalk);
+
+router.route('/problems/:problemId/comments/:commentId')
+  .get(secureRoute, comments.show)
+  .put(secureRoute, comments.update)
+  .delete(secureRoute, comments.delete);
+
+router.route('/users/:id')
+  .get(users.show)
+  .put(users.update);
 
 router.route('/register')
   .post(auth.register);
