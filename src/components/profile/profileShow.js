@@ -33,6 +33,7 @@ class ProfileShow extends React.Component {
               <div className="card-body">
                 <Link to={`/problems/${problem.id}`} className="card-link">Comment log for {problem.title}</Link>
                 <Link to={`problems/${problem.id}/comments`} className="card-link">Add a comment</Link>
+                <Link to={'/index'}>Index</Link>
               </div>
             </div>,
             <div key={`${problem.id}-2`} className="card col-md-6">

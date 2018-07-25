@@ -14,7 +14,7 @@ router.route('/problems/:id')
   .delete(problems.delete);
 
 router.route('/problems/:id/comments')
-  .post(secureRoute, problems.addWalk);
+  .post(secureRoute, problems.addComment);
 
 router.route('/problems/:problemId/comments/:commentId')
   .get(secureRoute, comments.show)

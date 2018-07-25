@@ -10,7 +10,7 @@ class ProblemsIndex extends React.Component {
   componentWillMount() {
     Axios
       .get('/api/problems')
-      .then(res => this.setState({ problem: res.data}, () => console.log(this.state.problem[0].title)))
+      .then(res => this.setState({ problem: res.data}, () => console.log('hello')))
       .catch(err => console.log(err));
   }
   render() {

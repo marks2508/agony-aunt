@@ -11,6 +11,7 @@ import ProblemsShow from './components/problems/problemsShow';
 import CommentsShow from './components/comments/commentsShow';
 import CommentsNew from './components/comments/commentsNew';
 import Homepage from './components/utility/homepage';
+import ProblemsIndex from './components/problems/problemsIndex';
 
 import './scss/style.scss';
 import 'font-awesome/css/font-awesome.css';
@@ -25,7 +26,7 @@ class App extends React.Component {
         <div>
           <Navbar />
           <main>
-            <Switch>              
+            <Switch>
               <Route path="/login" component={Login} />
               <Route path="/register" component={Register} />
               <Route path="/profile" component={Profile} />
@@ -33,6 +34,7 @@ class App extends React.Component {
               <Route path="/problems/:problemId/comments/:commentId" component={CommentsShow} />
               <Route path="/problems/:id/comments" component={CommentsNew} />
               <Route path="/problems/:id" component={ProblemsShow} />
+              <Route path="/index" component={ProblemsIndex} />
               <Route exact path="/" component={Homepage} />
             </Switch>
           </main>

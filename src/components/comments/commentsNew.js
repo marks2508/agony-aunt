@@ -2,6 +2,8 @@ import React from 'react';
 import Axios from 'axios';
 import CommentsForm from './commentsForm';
 import Auth from '../../lib/Auth';
+import BackButton from '../utility/BackButton';
+
 
 
 
@@ -47,6 +49,7 @@ class CommentsNew extends React.Component {
               advice={this.state.comment.advice}
             />
           </div>
+          <BackButton />
         </div>
       </div>
     );

@@ -67,5 +67,5 @@ module.exports = {
   show: problemsShow,
   update: problemsUpdate,
   delete: problemsDelete,
-  addWalk: problemsCommentsCreate
+  addComment: problemsCommentsCreate
 };
