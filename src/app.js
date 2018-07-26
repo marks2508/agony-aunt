@@ -34,8 +34,8 @@ class App extends React.Component {
               <Route path="/problems/:problemId/comments/:commentId" component={CommentsShow} />
               <Route path="/problems/:id/comments" component={CommentsNew} />
               <Route path="/problems/:id" component={ProblemsShow} />
-              <Route path="/index" component={ProblemsIndex} />
-              <Route exact path="/" component={Homepage} />
+              <Route path="/problems" component={ProblemsIndex} />
+              <Route exact path="/" component={ProblemsIndex} />
             </Switch>
           </main>
         </div>

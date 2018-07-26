@@ -4,27 +4,27 @@ import {Link} from 'react-router-dom';
 
 class ProblemsIndex extends React.Component {
   state = {
-    problem: []
+    problems: []
   }
 
   componentWillMount() {
     Axios
       .get('/api/problems')
-      .then(res => this.setState({ problem: res.data}, () => console.log('hello')))
+      .then(res => this.setState({ problems: res.data}, () => console.log('hello')))
       .catch(err => console.log(err));
   }
   render() {
     return (
       <div>
         <img className="background" src="https://i1.wp.com/www.yorkvision.co.uk/wp-content/uploads/2013/01/plainaa.jpg?resize=630%2C285" />
-        <h1 className="title">Welcome to Agony Aunt!</h1>
+        <h1 className="title">Welcome to Agony Aussssnt!</h1>
         <h2 className="sub-title">This is a site where you post your problems and people can offer their advice - all for free!</h2>
         <div className="container">
           <div className="row">
             <Link to="/problems/new" className="main-button">
               <i className="fa fa-plus" aria-hidden="true"></i>Add Problem
             </Link>
-            {this.state.problem.map(problem => {
+            {this.state.problems.map(problem => {
               return (
                 <div key={problem.id} className="cards col-md-4">
                   <div className="card-outline">

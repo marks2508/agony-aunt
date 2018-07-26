@@ -6,7 +6,9 @@ const auth = require('../controllers/auth');
 const secureRoute = require('../lib/secureRoute');
 
 router.route('/problems')
+  .get(problems.index)
   .post(secureRoute, problems.create);
+
 
 router.route('/problems/:id')
   .get(secureRoute, problems.show)

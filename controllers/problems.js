@@ -46,6 +46,14 @@ function problemsDelete(req, res, next) {
     .catch(next);
 }
 
+function problemsIndex(req, res, next) {
+  Problem
+    .find()
+    .exec()
+    .then(problems => res.json(problems))
+    .catch(next);
+}
+
 function problemsCommentsCreate(req, res, next) {
   User
     .findById(req.currentUser._id)
@@ -63,6 +71,7 @@ function problemsCommentsCreate(req, res, next) {
 }
 
 module.exports = {
+  index: problemsIndex,
   create: problemsCreate,
   show: problemsShow,
   update: problemsUpdate,
