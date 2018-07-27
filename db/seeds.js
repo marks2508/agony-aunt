@@ -13,6 +13,12 @@ const problemData = [
     category: 'Front-end frameworks',
     age: 34,
     location: 'London'
+  }, {
+    title: 'Bugs so many bugs',
+    issue: 'Flys, mossies, midgies',
+    category: 'Life of the poor and dangerous',
+    age: 23,
+    location: 'Harlem'
   }
 ];
 

@@ -7,10 +7,10 @@ class ProblemsIndex extends React.Component {
     problems: []
   }
 
-  componentWillMount() {
+  componentDidMount() {
     Axios
       .get('/api/problems')
-      .then(res => this.setState({ problems: res.data}, () => console.log('hello')))
+      .then(res => this.setState({ problems: res.data}, () => console.log(this.state.problems[0])))
       .catch(err => console.log(err));
   }
   render() {
@@ -30,7 +30,7 @@ class ProblemsIndex extends React.Component {
                   <div className="card-outline">
                     <div className="card-body">
                       <Link to={`/problems/${problem.id}`}><h3 className="card-title">{problem.title}</h3></Link>
-                      <p className="card-text">{problem.title}</p>
+                      <p className="card-text">Title: {problem.title}</p>
                       <p className="card-text">{problem.issue}</p>
                     </div>
                     <ul className="list-group list-group-flush">
